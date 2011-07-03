@@ -18,7 +18,7 @@ function bpdev_restrict_group_create($allowed_count=0,$current_group_count=0,$us
 	
 
 //no restriction to site admin
-if ( $bp->current_component != $bp->groups->slug || 'create' != $bp->current_action ||is_site_admin())
+if ( $bp->current_component != $bp->groups->slug || 'create' != $bp->current_action ||is_super_admin())
 		return false;
 //if we are here,It is group creation step
 
@@ -36,7 +36,11 @@ if($current_group_count>=$allowed_count){
 
 
 }
-
+/**
+ * Check if we should allow creating group or not
+ * @global type $bp
+ * @return type 
+ */
 function bpdev_check_group_create(){
 	global $bp;
 	if(!function_exists("bp_is_active")||!bp_is_active("groups"))
@@ -55,7 +59,9 @@ function bpdev_check_group_create(){
 add_action("wp","bpdev_check_group_create",2);
 
 
-
+/**
+ * Show the option on BuddyPress settings page to Limit the group
+ */
 function bpdev_limit_groups_admin_screen(){
 ?>
 <table class="form-table">
@@ -63,11 +69,10 @@ function bpdev_limit_groups_admin_screen(){
 <tr>
 	<th scope="row"><?php _e( 'Limit Groups Per User' ) ?></th>
 		<td>
-			<p><?php _e( 'How many Groups a user can create?') ?></p>
-
-						<label><input type="text" name="bp-admin[limit-groups-creation-per-user]" id="limit-groups-creation-per-user" value="<?php echo get_site_option( 'limit-groups-creation-per-user',0 );?>" /></label><br>
-	</td>
-				</tr>
+                    <p><?php _e( 'How many Groups a user can create?') ?></p>
+                    <label><input type="text" name="bp-admin[limit-groups-creation-per-user]" id="limit-groups-creation-per-user" value="<?php echo get_site_option( 'limit-groups-creation-per-user',0 );?>" /></label><br>
+                </td>
+	</tr>
 </tbody>
 </table>				
 <?php
