@@ -2,11 +2,11 @@
 /*
 * Plugin name: Limit Groups per User
 * description: Limit the number of groups a user can create.
-*Author:Brajesh Singh
-*Author URI: http://buddydev.com
-*Plugin URI: http://buddydev.com/buddypress/buddypress-sitewide-activity-widget-for-buddypress-1-2-and-above
-* Version: 1.1.1
-* Last Update: September 9, 2011
+* Author:Brajesh Singh
+* Author URI: http://buddydev.com
+* Plugin URI: http://buddydev.com/buddypress/limit-groups-per-user-plugin-for-buddypress/
+* Version: 1.1.2
+* Last Update: April 6, 2012
 * License: GPL
 */
 
@@ -29,7 +29,7 @@ if(!bpdev_can_create_new_groups($user_id)){
 
 		bp_core_add_message(apply_filters("restrict_group_message",__("Either You have exceeded the no. of groups you can create or you don't have permission to create group")),"error");
 		remove_action( 'wp', 'groups_action_create_group', 3 );
-		bp_core_redirect(bp_get_root_domain().'/'.  bp_get_groups_slug());
+		bp_core_redirect(bp_get_groups_directory_permalink());
 }
 
 
