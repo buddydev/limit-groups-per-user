@@ -2,9 +2,9 @@
 Contributors:sbrajesh
 Donate link: http://buddydev.com/donate/
 Tags: buddypress,buddypress activity,sitewide activity, sitewide activity widget,buddypress sitewide activity widget
-Requires at least: WordPress 3.2+buddypress 1.5 Rc1
-Tested up to:buddypress 1.5 Rc1
-Stable tag: 1.1.1
+Requires at least: WordPress 3.4.2+buddypress 1.6.1
+Tested up to:buddypress 1.1.1
+Stable tag: 1.1.3
 
 Limit Groups Per user plugin allows site admins to restrict the number og groups a user can create on a buddypress based Social network.
 == Description ==
