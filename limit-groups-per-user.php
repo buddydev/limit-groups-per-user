@@ -12,31 +12,37 @@
 
 
 //bp1.5 has a hook to disable the create button, so let us remove that
-add_filter('bp_user_can_create_groups','bpdev_can_current_user_create_new_groups');
-function bpdev_can_current_user_create_new_groups($can_create){
-    if(bpdev_can_create_new_groups(bp_loggedin_user_id()))
-        return true;
-    return false;
+add_filter( 'bp_user_can_create_groups','bpdev_can_current_user_create_new_groups' );
+function bpdev_can_current_user_create_new_groups( $can_create ){
+    
+    global $bp;
+    
+    if( bp_is_groups_component() && !bp_current_action() ){ //we are on directory
+        return bpdev_can_create_new_groups( bp_loggedin_user_id() );
+    }   
+       
+    return true;
     
 }
 
-function bpdev_restrict_group_create($user_id=null){
+function bpdev_restrict_group_create( $user_id=null ){
 	global $bp;
 
 //no restriction to site admin
-if (!bp_is_group_create() ||is_super_admin())
+if ( !bp_is_group_create() ||is_super_admin() )
 		return false;
 //if we are here,It is group creation step
 
 if(!$user_id)
 	$user_id=  bp_loggedin_user_id();
+//print_r($_COOKIE);
 //even in cae of zero, it will return true
-if(!empty($_COOKIE['bp_new_group_id']))
+if( !empty($_COOKIE['bp_new_group_id'] ) )
     return;//this is intermediate step of group creation
-if(!bpdev_can_create_new_groups($user_id)){
+if( !bpdev_can_create_new_groups( $user_id ) ){
 
 		bp_core_add_message(apply_filters("restrict_group_message",__("Either You have exceeded the no. of groups you can create or you don't have permission to create group")),"error");
-		remove_action( 'bp_actions', 'groups_action_create_group', 3 );
+		remove_action( 'bp_actions', 'groups_action_create_group' );
 		bp_core_redirect(bp_get_groups_directory_permalink());
 }
 
@@ -102,10 +108,10 @@ class BPLimitGroupsPerUserAdminHelper{
     }
     function register_settings(){
         // Add the ajax Registration settings section
-            add_settings_section( 'bp_limit_groups_per_user',        __( 'Limit Groups Per User Settings',  'bp-limit-groups-per-user' ), array($this,'reg_section'),   'buddypress'              );
+            add_settings_section( 'bp_limit_groups_per_user', __( 'Limit Groups Per User Settings',  'bp-limit-groups-per-user' ), array($this,'reg_section'),   'buddypress'              );
             // Allow loading form via jax or nt?
             add_settings_field( 'limit-groups-creation-per-user', __( 'How many Groups a user can Create?',   'bp-limit-groups-per-user' ), array($this,'settings_field'),   'buddypress', 'bp_limit_groups_per_user' );
-            register_setting  ( 'buddypress',         'limit-groups-creation-per-user',   'intval' );
+            register_setting  ( 'buddypress', 'limit-groups-creation-per-user',   'intval' );
     }
     
     function reg_section(){
@@ -113,12 +119,11 @@ class BPLimitGroupsPerUserAdminHelper{
     }
     
     function settings_field(){
-            $val=bp_get_option('limit-groups-creation-per-user',0);?>
-
-         
-                   
-                    <label>
-                        <input type="text" name="limit-groups-creation-per-user" id="limit-groups-creation-per-user" value="<?php echo $val;?>" /></label><br>
+        $val=bp_get_option('limit-groups-creation-per-user',0);
+        ?>
+        <label>
+            <input type="text" name="limit-groups-creation-per-user" id="limit-groups-creation-per-user" value="<?php echo $val;?>" />
+        </label><br>
                     
    <?php }
     
