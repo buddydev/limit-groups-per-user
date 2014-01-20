@@ -5,7 +5,7 @@
 * Author:Brajesh Singh
 * Author URI: http://buddydev.com
 * Plugin URI: http://buddydev.com/buddypress/limit-groups-per-user-plugin-for-buddypress/
-* Version: 1.1.4
+* Version: 1.2
 * Last Update: January 20, 2013
 * License: GPL
 */
