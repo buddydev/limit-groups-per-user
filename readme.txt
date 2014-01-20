@@ -1,14 +1,14 @@
 === Limit Groups Per User ===
 Contributors:sbrajesh
 Donate link: http://buddydev.com/donate/
-Tags: buddypress,buddypress activity,sitewide activity, sitewide activity widget,buddypress sitewide activity widget
-Requires at least: WordPress 3.4.2+buddypress 1.6.1
-Tested up to:buddypress 1.1.1
-Stable tag: 1.1.3
+Tags: buddypress, buddypress limit groups, groups
+Requires at least: WordPress 3.8+BuddyPress 1.9.1
+Tested up to:BuddyPress 1.9.1
+Stable tag: 1.1.4
 
-Limit Groups Per user plugin allows site admins to restrict the number og groups a user can create on a buddypress based Social network.
+Limit Groups Per user plugin allows site admins to restrict the number of groups a user can create on a BuddyPress based Social network.
 == Description ==
-Limit Groups Per user plugin allows site admins to restrict the number og groups a user can create on a buddypress based Social network.
+Limit Groups Per user plugin allows site admins to restrict the number of groups a user can create on a BuddyPress based Social network.
 
 Features include:
 
@@ -23,23 +23,26 @@ The plugin is simple to install:
 1. Unzip It
 1. Upload `limit-grouops-per-user` directory to your `/wp-content/plugins` directory
 1. Go to the plugin management page and activate the plugin "Limit Groups Per User", Activate the plugin sitewide if you want to use it sitewide.
-1. Enter the maximum no. of groups in Dashboard->BuddyPress->Seneral Settings
+1. Enter the maximum no. of groups in Dashboard->BuddyPress->General Settings
 Otherwise, Use the Plugin browser, upload it and activate, you are done.
 == Frequently Asked Questions ==
 = How to Use =
-Go to Dashboard->Buddypress->General settings, eneter the maximum no. of groups a user can create. Click save. That's it.
+Go to Dashboard->Buddypress->General settings, enter the maximum no. of groups a user can create. Click save. That's it.
 = It is not showing the error message to user =
 Since BuddyPress does not include the action "template_notices"
 in directory pages, please edit your theme/groups/index.php and put it somewhere below the padder div
 `<?php do_action( 'template_notices' ) ?>`
 
 == Changelog == 
+
+ = Version 1.1.4 =
+ * Updated for BuddyPress 1.9
  = Version 1.1.1 =
  * Updated for BuddyPress 1.5
  = Version 1.0 =
-*Initial release
+ *Initial release
 
 
 == Other ==
 
-For more info visit us at [BuddyDev.com](http://buddydev.com/ "The best place for all buddypress based plugins,themes tutorials")
+For more info visit us at [BuddyDev.com](http://buddydev.com/ "The best place for all BuddyPress based plugins, themes tutorials" )
