@@ -127,10 +127,10 @@ class BP_Limit_Groups_Per_User_Helper{
 
     /**
      * Can current use create new group?
-     * 
-     * @global type $bp
-     * @param type $user_id
-     * @return type 
+     *
+     * @param int $user_id User id.
+     *
+     * @return bool
      */
     public function user_can_create_new_group( $user_id  ) {
 
