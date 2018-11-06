@@ -1,10 +1,10 @@
-=== Limit Groups Per User ===
-Contributors:sbrajesh
-Donate link: http://buddydev.com/donate/
+=== Limit BuddyPress Groups Per User ===
+Contributors: buddydev,sbrajesh
+Donate link: https://buddydev.com/donate/
 Tags: buddypress, buddypress limit groups, groups
-Requires at least: WordPress 3.8+BuddyPress 1.9.1
-Tested up to:BuddyPress 1.9.1
-Stable tag: 1.2
+Requires at least: 4.5
+Tested up to: 4.9.8
+Stable tag: 1.2.1
 
 Limit Groups Per user plugin allows site admins to restrict the number of groups a user can create on a BuddyPress based Social network.
 == Description ==
@@ -12,8 +12,8 @@ Limit Groups Per user plugin allows site admins to restrict the number of groups
 
 Features include:
 
-* No restriction to Site Admin
-* restrict Maximum number of Groups Created by a user
+* No restriction for Site Admin
+* Restrict Maximum number of Groups Created by a user
 
 == Installation ==
 
@@ -21,7 +21,7 @@ The plugin is simple to install:
 
 1. Download `limit-groups-per-user.zip`
 1. Unzip It
-1. Upload `limit-grouops-per-user` directory to your `/wp-content/plugins` directory
+1. Upload `limit-groups-per-user` directory to your `/wp-content/plugins` directory
 1. Go to the plugin management page and activate the plugin "Limit Groups Per User", Activate the plugin sitewide if you want to use it sitewide.
 1. Enter the maximum no. of groups in Dashboard->Settings->BuddyPress->Settings(Or Network Admin->Settings->BuddyPress->Settings)
 Otherwise, Use the Plugin browser, upload it and activate, you are done.
@@ -33,7 +33,10 @@ Since BuddyPress does not include the action "template_notices"
 in directory pages, please edit your theme/groups/index.php and put it somewhere below the padder div
 `<?php do_action( 'template_notices' ) ?>`
 
-== Changelog == 
+== Changelog ==
+ = Version 1.2.1 =
+  * Minor changes
+
  = Version 1.2 =
  * Completely Rewritten
  * Updated for BuddyPress 1.9+
