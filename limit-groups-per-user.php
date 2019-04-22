@@ -5,7 +5,7 @@
  * Author: BuddyDev
  * Author URI: https://buddydev.com
  * Plugin URI: https://buddydev.com/buddypress/limit-groups-per-user-plugin-for-buddypress/
- * Version: 2.0.0
+ * Version: 2.0.1
  * License: GPL
  */
 
@@ -126,9 +126,7 @@ class BP_Limit_Groups_Per_User_Helper {
 	}
 
 	/**
-	 * Modify groups directory link
-	 *
-	 * @return string
+	 * Modify group redirect
 	 */
 	public function groups_action_create_redirect() {
 		// If we're not at domain.org/groups/create/ then return false.
