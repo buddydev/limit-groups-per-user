@@ -90,6 +90,15 @@ class Limit_Groups_Per_User_Admin_Helper {
 		// A panel is a Tab and what comes under that tab.
 		$panel = $page->add_panel( 'general', _x( 'General', 'Admin settings panel title', 'limit-groups-per-user' ) );
 
+		$section = $panel->add_section( 'general_settings', _x( 'General settings', 'Section title', 'limit-groups-per-user' ) );
+
+		$section->add_field( array(
+			'name'  => 'redirect_url',
+			'label' => _x( 'Redirect url', 'Admin settings', 'limit-groups-per-user' ),
+			'type'  => 'text',
+			'desc'  => __( 'Redirect url when user reached their limit', 'limit-groups-per-user' ),
+		) );
+
 		$roles = $this->get_roles();
 
 		foreach ( $roles as $role => $label ) {

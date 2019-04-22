@@ -70,6 +70,8 @@ class BP_Limit_Groups_Per_User_Helper {
 			array( $this, 'filter_create_groups_permission' )
 		);
 
+		add_action( 'bp_actions', array( $this, 'groups_action_create_redirect' ), 9 );
+
 		add_action( 'plugins_loaded', array( $this, 'load_admin' ), 9996 );
 	}
 
@@ -121,6 +123,29 @@ class BP_Limit_Groups_Per_User_Helper {
 		$allowed_count = apply_filters( 'limit_groups_get_allowed_group_count', self::get_user_limit( $user_id ), $user_id );
 
 		return absint( $allowed_count );
+	}
+
+	/**
+	 * Modify groups directory link
+	 *
+	 * @return string
+	 */
+	public function groups_action_create_redirect() {
+		// If we're not at domain.org/groups/create/ then return false.
+		if ( ! bp_is_groups_component() || ! bp_is_current_action( 'create' ) ) {
+			return false;
+		}
+
+		if ( ! is_user_logged_in() ) {
+			return false;
+		}
+
+		$redirect_url = trim( self::get_option( 'redirect_url' ) );
+
+		if ( ! bp_user_can_create_groups() && $redirect_url ) {
+			bp_core_add_message( __( 'Sorry, you are not allowed to create groups.', 'buddypress' ), 'error' );
+			bp_core_redirect( $redirect_url );
+		}
 	}
 
 	/**
