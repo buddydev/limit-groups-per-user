@@ -2,7 +2,7 @@
 Contributors: buddydev,sbrajesh,raviousprime
 Tags: buddypress, buddypress limit groups, groups
 Requires at least: 4.5
-Tested up to: 5.1.1
+Tested up to: 5.4.1
 Stable tag: 2.0.0
 
 Limit Groups Per user plugin allows site admins to restrict the number of groups a user can create on a BuddyPress based Social network.
@@ -36,6 +36,10 @@ in directory pages, please edit your theme/groups/index.php and put it somewhere
 After Installation/Upgrade, Please visit Dashboard->settings->Limit Groups Per User and update settings.
 
 == Changelog ==
+
+ = Version 2.0.2 =
+  * Exclude settings for bbPress roles.
+  * Change the strategy for checking role based restricitons.
 
  = Version 2.0.0 =
   * Add settings to support role based limits.
