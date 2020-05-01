@@ -5,7 +5,7 @@
  * Author: BuddyDev
  * Author URI: https://buddydev.com
  * Plugin URI: https://buddydev.com/buddypress/limit-groups-per-user-plugin-for-buddypress/
- * Version: 2.0.1
+ * Version: 2.0.2
  * License: GPL
  */
 
@@ -238,6 +238,9 @@ class BP_Limit_Groups_Per_User_Helper {
 
 		$allowed_count = 0;
 		foreach ( $user->roles as $role ) {
+			if ( strpos( $role, 'bbp_' ) === 0 ) {
+				continue;
+			}
 			$role_allowed_count = self::get_option( "{$role}_threshold_limit" );
 
 			// Increase user threshold to max of his role threshold.
@@ -257,7 +260,7 @@ class BP_Limit_Groups_Per_User_Helper {
 	 * @return boolean
 	 */
 	public static function is_user_restricted( $user_id ) {
-		$is_restricted = true;
+		$is_restricted = false;
 
 		$user = get_user_by( 'id', $user_id );
 
@@ -266,9 +269,13 @@ class BP_Limit_Groups_Per_User_Helper {
 		}
 
 		foreach ( $user->roles as $role ) {
+			if ( strpos( $role, 'bbp_' ) === 0 ) {
+				continue;
+			}
+
 			// if any role is not restricted, do not restrict.
-			if ( ! self::get_option( "restrict_role_{$role}" ) ) {
-				$is_restricted = false;
+			if ( self::get_option( "restrict_role_{$role}" ) ) {
+				$is_restricted = true;
 				break;
 			}
 		}
